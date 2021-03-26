@@ -1,6 +1,5 @@
 package com.ibm.demo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +10,7 @@ import com.ibm.demo.entity.Order;
 import com.ibm.demo.repo.OrderRepository;
 
 @Service
-public class OrderService { // Spring Beans
+public class OrderService { // Spring Beans,singleton design pattern
 	@Autowired
 	OrderRepository orderRepository;
 	public String createOrder(Order order) {
@@ -26,9 +25,9 @@ public class OrderService { // Spring Beans
 	public void updateOrder(Order order) {
 		orderRepository.save(order);
 	}
-
-	public void deleteOrder(int orderId) {
-		System.out.println("order deleted");
+	
+	public void deleteOrder(String orderId) {
+		orderRepository.deleteById(orderId);
 	}
 
 	public Optional<Order> getOrder(String orderId) {

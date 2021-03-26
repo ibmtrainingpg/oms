@@ -37,6 +37,7 @@ public class OrderController { // frontend
 
 	@GetMapping("/order")
 	List<Order> getOrders() {
+		System.out.println(orderService.hashCode());
 		return orderService.getOrders();
 	}
 	/**
@@ -65,8 +66,7 @@ public class OrderController { // frontend
 	}
 
 	@DeleteMapping("/order/{id}")
-	void deleteOrder(@PathVariable("id") int orderId, HttpRequest httpRequest) {
-		System.out.println(httpRequest.getHeaders());
+	void deleteOrder(@PathVariable("id") String orderId) {
 		System.out.println(orderId);
 		orderService.deleteOrder(orderId);
 	}
